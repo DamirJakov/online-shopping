@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<section th:replace="common/header::head"></section>
+<body>
+<section class="content-header" th:replace="common/menubar::uperbar"></section>
+<br/><br/>
+<div th:if="${login}" th:text="#{login.success}"></div>
+<div th:unless="${login}">
+    <form class="form" th:action="@{/login}" method="post">
+        <div th:if="${param['error']}" th:text="#{login.invalid}" class="alert">
+        </div>
+        <div th:if="${param['logout']}" th:text="#{login.logout}" class="success">
+        </div>
+
+        <fieldset>
+            <legend th:text="#{login.legend.form}"></legend>
+            <div class="fieldset">
+                <label for="username" th:text="#{login.legend.emaillogin}"></label>
+                <div class="col-md-4">
+                    <input id="username" name="username" type="text" th:placeholder="#{login.emaillogin}"
+                           required=""/>
+                </div>
+            </div>
+            <div class="fieldset">
+                <label for="password" th:text="#{login.legend.password}"></label>
+                <div class="col-md-4">
+                    <input id="password" name="password" type="password" th:placeholder="#{login.password}"
+                           required=""/>
+                </div>
+            </div>
+            <div class="fieldset">
+                <label for="enter"></label>
+                <div class="col-md-4">
+                    <button id="enter" name="enter" class="btn btn-default" th:text="#{login.enter}"></button>
+                </div>
+
+            </div>
+
+        </fieldset>
+    </form>
+
+    <form class="form" th:action="@{/login}" method="post">
+        <div th:if="${param['error']}" th:text="#{login.invalid}" class="alert">
+        </div>
+        <div th:if="${param['logout']}" th:text="#{login.logout}" class="success">
+        </div>
+
+        <fieldset>
+            <legend th:text="#{login.new.account}"></legend>
+            <div class="fieldset">
+                <label for="enter"></label>
+                <div class="col-md-4">
+                    <a th:href="@{'/user/add'}" th:text="#{login.CreateANewAccount}"></a>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>
+<section th:replace="common/footer::footer"></section>
+</body>
+</html>

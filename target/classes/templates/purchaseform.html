@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<section th:replace="common/header::head"></section>
+<body>
+<section class="content-header" th:replace="common/menubar::uperbar"></section>
+<section>
+    <header><h2><th class="tg-0lax" th:text="#{product.order}">Please complete your order</th></h2></header>
+    <table class="producttable">
+        <tr>
+            <th class="tg-0lax" th:text="#{cart.name}">Name</th>
+            <th class="tg-0lax" th:text="#{cart.price}">Price</th>
+            <th class="tg-0lax" th:text="#{cart.remove}">Remove from cart</th>
+        </tr>
+        <tr th:each="product: ${products}">
+            <td th:text="${product.getName()}"></td>
+            <td th:text="${product.getPrice()}"></td>
+            <td><a th:href="@{/cart/remove/{id}(id=${product.getId()})}">
+                <button th:text="#{button.remove}">Remove</button>
+            </a>
+            </td>
+        </tr>
+    </table>
+    <form style="width:500px" action="/cart/buy" method="post" th:object="${PurchaseForm}">
+        <fieldset>
+            <legend th:text="#{order.details.header}">Order details:</legend>
+            <span class="label" style="width: 50px" th:text="#{purchase.name}">name: </span>
+            <input name="name" type="text" required="true" th:field="*{name}"/><br/>
+            <span class="label" style="width: 50px" th:text="#{purchase.surname}">surname:</span>
+            <input name="surname" type="text" required="true" th:field="*{surname}"/><br/>
+            <span class="label" style="width: 50px" th:text="#{purchase.email}">email: </span>
+            <input name="email" type="email" required="true" th:field="*{email}"/><br/>
+            <span class="label" style="width: 50px" th:text="#{purchase.address}">Home address: </span>
+            <input name="address" type="text" required="true" th:field="*{address}"/><br/>
+            <button type="reset" th:text="#{button.reset}"/><button type="submit" th:text="#{button.buy.product}"/>
+
+        </fieldset>
+
+
+    </form>
+
+</section>
+</body>
+</html>

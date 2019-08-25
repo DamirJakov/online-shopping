@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<section th:replace="common/header::head"></section>
+<body>
+<section class="content-header" th:replace="common/menubar::uperbar"></section>
+<table class="producttable" th:fragment="producttable">
+    <tr>
+        <th class="tg-0lax" th:text="#{product.name}">Name</th>
+        <th class="tg-0lax" th:text="#{product.description}">Description</th>
+        <th class="tg-0lax" th:text="#{product.price}">Price</th>
+        <th:block th:if="${currentUser}">
+            <th th:if="${currentUser.getRole().toString().equals('ADMIN')}" class="tg-0lax"
+                th:text="#{product.availability}">Availability
+            </th>
+        </th:block>
+        <th th:if="${currentUser}" class="tg-0lax" th:text="#{product.owner}">Owner</th>
+        <th:block th:if="${currentUser}">
+            <th:block th:if="${ editDelete==true}">
+                <th class="tg-0lax" th:text="#{product.remove}">Remove</th>
+                <th class="tg-0lax" th:text="#{product.update}">Update</th>
+            </th:block>
+        </th:block>
+        <th:block th:unless="${editDelete}">
+            <th th:if="${currentUser}" class="tg-0lax" th:text="#{product.buy}">Buy</th>
+        </th:block>
+    </tr>
+
+
+    <tr th:each="product: ${products}">
+        <td th:text="${product.getName()}"></td>
+        <td th:text="${product.getDescription()}"></td>
+        <td th:text="${product.getPrice()}"></td>
+        <th:block th:if="${currentUser}">
+            <th:block th:if="${ currentUser.getRole().toString().equals('ADMIN')}">
+                <th:block th:if="${product.isAvailable()==true}">
+                    <td th:text="#{is.available}">tak</td>
+                </th:block>
+                <th:block th:unless="${product.isAvailable()==true}">
+                    <td th:text="#{is.not.available}">nie</td>
+                </th:block>
+            </th:block>
+        </th:block>
+
+
+        <td th:if="${currentUser}" th:text="${product.getUser().getName()}"></td>
+
+
+        <th:block th:if="${currentUser} and ${editDelete}">
+            <th:block th:if="${currentUser.getRole().toString().equals('ADMIN')}">
+                <td>
+                    <a class="a-button"
+                       th:if="${product.getUser().getRole().toString() != 'ADMIN' or product.getUser().getId().equals(currentUser.getId())}"
+                       onclick="deleteProduct(this.id)"
+                       th:id="${product.getId()}"
+                       th:text="#{general.delete}"></a>
+                </td>
+            </th:block>
+            <th:block th:unless="${currentUser.getRole().toString().equals('ADMIN')}">
+                <td><a class="a-button" th:if="${product.getUser().getId().equals(currentUser.getId())}"
+                       onclick="deleteProduct(this.id)"
+                       th:id="${product.getId()}"
+                       th:text="#{general.delete}"></a>
+                </td>
+            </th:block>
+
+            <th:block th:if="${currentUser.getRole().toString().equals('ADMIN')}">
+                <td>
+                    <a class="a-button"
+                       th:if="${product.getUser().getRole().toString() != 'ADMIN' or product.getUser().getId().equals(currentUser.getId())}"
+                       th:href="@{/product/update/{id}(id=${product.getId()})}" th:text="#{general.edit}"></a>
+                </td>
+            </th:block>
+            <th:block th:unless="${currentUser.getRole().toString().equals('ADMIN')}">
+                <td><a class="a-button" th:if="${product.getUser().getId().equals(currentUser.getId())}"
+                       th:href="@{/product/update/{id}(id=${product.getId()})}" th:text="#{general.edit}"></a>
+                </td>
+            </th:block>
+        </th:block>
+
+        <th:block th:if="${currentUser} ">
+            <td th:unless="${product.getUser().getId().equals(currentUser.getId())}">
+                <a onclick="addToCart(this.id)"
+                   th:id="${product.getId()}">
+                    <button th:text="#{button.addtocart}"></button>
+                </a>
+            </td>
+        </th:block>
+
+    </tr>
+</table>
+<ul th:if="${currentUser} and ${editDelete}">
+    <li>
+        <button
+                type="button" title="Add product" class="button btn-add-product btn-add"
+                onclick="window.location='/product/add';" th:text="#{product.add}">
+        </button>
+    </li>
+</ul>
+
+<div id="addtocart" class="message" th:text="#{product.addToCart}"></div>
+<div id="alreadyexists" class="message" th:text="#{product.already}"></div>
+
+
+<section th:replace="common/footer::footer"></section>
+</body>
+</html>

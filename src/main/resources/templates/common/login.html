@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <base href="/"/>
+    <title>WebStore</title>
+    <link href="../static/css/style.css" th:href="@{/css/styles.css}" rel="stylesheet" type="text/css"/>
+
+</head>
+<body>
+<form class="form" th:action="@{/login}" method="post" th:fragment="loginform">
+    <div th:if="${param['error']}" th:text="#{login.invalid}" class="alert">
+    </div>
+    <div th:if="${param['logout']}" th:text="#{login.logout}" class="success">
+    </div>
+
+    <fieldset>
+        <legend th:text="#{login.legend.form}"></legend>
+        <div class="fieldset">
+            <label for="username" th:text="#{login.legend.emaillogin}"></label>
+            <div class="col-md-4">
+                <input id="username" name="username" type="text" th:placeholder="#{login.emaillogin}"
+                       required=""/>
+            </div>
+        </div>
+        <div class="fieldset">
+            <label for="password" th:text="#{login.legend.password}"></label>
+            <div class="col-md-4">
+                <input id="password" name="password" type="password" th:placeholder="#{login.password}"
+                       required=""/>
+            </div>
+        </div>
+
+    </fieldset>
+</form>
+
+
+</body>
+</html>

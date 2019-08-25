@@ -1,0 +1,276 @@
+.form {
+    margin-top: 20px;
+    display: block;
+    width: 400px;
+    text-align: center;
+}
+
+.fieldset {
+    border: none;
+}
+
+body {
+    margin: auto;
+    width: 1000px;
+    background: ghostwhite;
+    text-align: justify;
+    font-family: 'Times New Roman', Times New Roman, monospace;
+    font-weight: bold;
+    font-size: 14;
+}
+
+input {
+    color: black;
+    text-align: center;
+    cursor: default;
+    background-color: whitesmoke;
+    padding: 2px 6px 3px;
+    border-width: 2px;
+    border-style: outset;
+    border-color: black;
+    font: 400 13.3333px Arial;
+}
+
+.col-md-4 {
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-top: 5px;
+    margin-bottom: 4px;
+}
+
+button {
+    -webkit-appearance: button;
+    color: black;
+    text-align: center;
+    cursor: default;
+    background-color: whitesmoke;
+    padding: 2px 6px 3px;
+    border-width: 2px;
+    border-style: outset;
+    border-color: black;
+    font: 400 13.3333px Arial;
+}
+
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px
+}
+
+.success {
+    border-color: #468847;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075)
+}
+
+/*.shoping_cart {*/
+/*    height: 30px;*/
+/*    margin-top: 5px;*/
+/*    margin-left: 5px;*/
+/*}*/
+
+/*.user {*/
+/*    height: 23px;*/
+/*    filter: invert(100%) sepia(100%) saturate(50000%) hue-rotate(4deg);*/
+/*    display: inline-block;*/
+/*    padding: 0;*/
+/*    overflow: hidden;*/
+/*    transition: all .3s ease;*/
+/*    margin: 0 40px 10px 0;*/
+/*    vertical-align: top;*/
+/*    float: left;*/
+
+/*}*/
+
+.searchinputupbar {
+    display: inline;
+}
+
+.searchinputupbar input {
+    width: 400px;
+}
+
+.box {
+    float: left;
+}
+
+.titleonsite {
+    padding: 10px;
+}
+
+.serachButton {
+    color: black;
+    text-align: center;
+    cursor: default;
+    background-color: whitesmoke;
+    padding: 2px 6px 3px;
+    font: 400 13.3333px Arial;
+}
+
+.upbar {
+    position: fixed;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    width: max-content;
+}
+
+.languagepicker {
+    background-color: #DDD;
+    display: inline-block;
+    padding: 0;
+    height: 30px;
+    overflow: hidden;
+    transition: all .3s ease;
+    margin: 0 40px 10px 0;
+    vertical-align: top;
+    float: left;
+}
+
+.languagepicker:hover {
+    height: 61px;
+}
+
+.languagepicker a {
+    color: #000;
+    text-decoration: none;
+}
+
+.languagepicker li {
+    display: block;
+    padding: 0px 10px;
+    line-height: 30px;
+    border-top: 1px solid #EEE;
+}
+
+.languagepicker li:hover {
+    background-color: #AAA;
+}
+
+.languagepicker a:first-child li {
+    border: none;
+    background: #DDD !important;
+}
+
+.languagepicker li img {
+    margin-right: 5px;
+}
+
+.roundborders {
+    border-radius: 5px;
+}
+
+#box:hover {
+    opacity: 0;
+    transition: all .3s ease;
+    padding: -200px 10px;
+    font-size: 38px;
+}
+
+.upmenu {
+
+    display: inline-block;
+    padding: 0;
+    height: 30px;
+    overflow: hidden;
+    transition: all .3s ease;
+    margin: 0 10px 10px 0;
+    vertical-align: top;
+    float: left;
+}
+
+.upmenu:hover {
+    height: 91px;
+}
+
+.upmenu a {
+    color: #000;
+    text-decoration: none;
+}
+
+.upmenu li {
+    display: block;
+    padding: 0px 10px;
+    line-height: 30px;
+    border-top: 1px solid #EEE;
+}
+
+.upmenu li:hover {
+    background-color: #AAA;
+}
+
+.upmenu a:first-child li {
+    border: none;
+}
+
+.upmenu li button {
+    margin-right: 5px;
+}
+
+.user_table {
+    border-color: black;
+    border-style: dashed;
+    border-width: 2px;
+
+}
+
+header {
+    background-color: white;
+    text-align: center;
+    font-family: 'Times New Roman', Times New Roman, monospace;
+    font-weight: bold;
+
+}
+
+button {
+    background: black;
+    color: white;
+    border-radius: 5px ;
+}
+
+table {
+    border-collapse: collapse;
+    border-width: 2px;
+    border-style: solid;
+    border-color: black;
+    text-transform: capitalize;
+    width: 100%;
+
+}
+
+td {
+    border: 1px solid grey;
+}
+
+th {
+    border: 1px solid grey;
+}
+
+.a-button {
+    -webkit-appearance: button;
+    color: white;
+    text-align: center;
+    cursor: default;
+    background-color: black;
+    padding: 2px 6px 3px;
+    border-width: 2px;
+    border-style: outset;
+    border-color: whitesmoke;
+    font: 400 13.3333px Arial;
+}
+
+.message {
+    display: none;
+    transition: all .05s ease;
+    position: absolute;
+    top: 28px;
+    left: 30%;
+    border: 3px solid #73AD21;
+    background-color: wheat;
+    width: 300px;
+    text-align: center;
+    vertical-align: middle;
+    transform: translate(0, 10%);
+}

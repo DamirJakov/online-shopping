@@ -1,0 +1,12 @@
+version: '3.1'
+services:
+  db:
+    image: mariadb
+    restart: always
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+      MYSQL_DATABASE: webstore
+      MYSQL_USER: test
+      MYSQL_PASSWORD: test

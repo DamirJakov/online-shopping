@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<section th:replace="common/header::head"></section>
+<body>
+<section class="content-header" th:replace="common/menubar::uperbar"></section>
+
+<div th:fragment="content">
+    <section>
+        <form class="grid" style="grid-template-columns: 150px 150px 200px;"
+              action="#" th:action="${user.id == null ? '/user/add' : '/user/update'}" th:object="${user}" method="post">
+            <input type="hidden" th:field="*{id}"/>
+
+            <label for="name"  th:text="#{user.name}">Name:</label>
+            <input id="name" type="text" th:field="*{name}"/>
+            <label for="name"><span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span></label><br/>
+
+            <label for="surname" th:text="#{user.surname}">Surname:</label>
+            <input id="surname" type="text" th:field="*{surname}"/>
+            <label for="surname"><span th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}"></span></label><br/>
+
+            <label for="username" th:text="#{user.username}">Username:</label>
+            <input id="username" type="text" th:field="*{username}"/>
+            <label for="username"><span th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></span></label><br/>
+
+            <label for="email" th:text="#{user.email}">Email:</label>
+            <input id="email" type="email" th:field="*{email}"/>
+            <label for="email"><span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span></label><br/>
+
+            <label for="password" th:text="#{user.password}">Password:</label>
+            <input id="password" type="password" th:field="*{password}"/>
+            <label for="password"><span th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span></label><br/>
+
+
+            <input type="submit" value="Submit" th:value="#{general.submit}"/>
+            <input type="reset" value="Reset" th:value="#{general.reset}"/><br/>
+        </form>
+    </section>
+</div>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html >
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<section th:replace="common/header::head"></section>
+<body>
+<header th:fragment="uperbar">
+    <!--/*@thymesVar id="param" type="java.util.Map"*/-->
+    <div class="upbar">
+        <div th:text="#{service.name}" class="titleonsite box"></div>
+        <form th:action="@{/product/search}" method="get" class="searchinputupbar">
+            <input name="name" type="text" th:placeholder="#{search.text}" class="col-md-4 box"/>
+            <button class="col-md-4 searchButton  box" th:text="#{button.search}"></button>
+        </form>
+
+        <ul class="upmenu box">
+        <a href="/product">
+            <li>
+                <button th:text="#{button.product}"></button>
+            </li>
+        </a>
+            <a href="/cart/">
+                <li>
+                    <button th:text="#{button.cart}"></button>
+                </li>
+            </a>
+            <a href="/product/owner">
+                <li>
+                    <button th:text="#{general.myProducts}"></button>
+                </li>
+            </a>
+
+        </ul>
+
+
+        <ul class="upmenu box">
+            <a href="/login">
+                <li>
+                    <button th:text="#{button.login}">Login</button>
+                </li>
+            </a>
+            <a href="/user">
+                <li>
+                    <button th:text="#{button.userinfo}">User info</button>
+                </li>
+            </a>
+            <a href="/logout">
+                <li>
+                    <button th:text="#{button.logout}">Logout</button>
+                </li>
+            </a>
+        </ul>
+        <ul class="languagepicker box">
+            <th:block th:switch="__${#locale.language}__">
+                <th:block th:case="pl">
+                    <a th:href="@{${#httpServletRequest.getRequestURI()+'?lang=pl'}} ">
+                        <li><img src="http://oi49.tinypic.com/28l5t0m.jpg"/>Polski</li>
+                    </a>
+                    <a th:href="@{${#httpServletRequest.getRequestURI()+'?lang=en'}} ">
+                        <li><img src="http://i64.tinypic.com/fd60km.png"/>English</li>
+                    </a>
+                </th:block>
+                <th:block th:case="en">
+                    <a th:href="@{${#httpServletRequest.getRequestURI()+'?lang=en'}} ">
+                        <li><img src="http://i64.tinypic.com/fd60km.png"/>English</li>
+                    </a>
+                    <a th:href="@{${#httpServletRequest.getRequestURI()+'?lang=pl'}} ">
+                        <li><img src="http://oi49.tinypic.com/28l5t0m.jpg"/>Polski</li>
+                    </a>
+                </th:block>
+            </th:block>
+        </ul>
+    </div>
+    <br/><br/><br/>
+</header>
+</body>
+</html>

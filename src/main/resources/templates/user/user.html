@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<section th:replace="common/header::head"></section>
+<body>
+<section class="content-header" th:replace="common/menubar::uperbar"></section>
+<table class = "user_table">
+    <tr >
+        <th class="tg-0lax" th:text="#{user.name}"></th>
+        <th class="tg-0lax" th:text="#{user.surname}"></th>
+        <th class="tg-0lax" th:text="#{user.username}"></th>
+        <th class="tg-0lax" th:text="#{user.email}"></th>
+    </tr>
+    <tr th:each = "user: ${users}">
+        <td th:text="${user.getName()}"></td>
+        <td th:text="${user.getSurname()}"></td>
+        <td th:text="${user.getUsername()}"></td>
+        <td th:text="${user.getEmail()}"></td>
+        <td>
+            <a th:if="${user.getRole().toString() != 'ADMIN' or currentUser.getId().equals(user.getId())}" th:href="@{/user/delete/{id}(id=${user.id})}">
+                <button th:text="#{general.delete}">
+                    Delete
+                </button>
+            </a>
+        </td>
+        <td><a th:if="${user.getRole().toString() != 'ADMIN' or currentUser.getId().equals(user.getId())}" th:href="@{/user/update/{id}(id=${user.id})}">
+            <button th:text="#{general.edit}">
+                Edit
+            </button></a>
+        </td>
+    </tr>
+</table>
+<a href="#" th:href="@{/user/add}" th:if="${currentUser.getRole().toString() == 'ADMIN'}">
+    <button th:text="#{general.add}">
+        Add
+    </button></a>
+</body>
+</html>

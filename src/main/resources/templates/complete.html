@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<section th:replace="common/header::head"></section>
+<body>
+<section class="content-header" th:replace="common/menubar::uperbar"></section>
+<br/><br/>
+<section th:replace="common/footer::footer"></section>
+<th th:text="#{order.complete}">
+Your order has been completed and will be shipped within 3 working days.
+</th>
+<section th:replace="common/footer::footer"></section>
+</body>
+</html>

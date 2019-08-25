@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<section th:replace="common/header::head"></section>
+<body>
+<section class="content-header" th:replace="common/menubar::uperbar"></section>
+<nav>
+</nav>
+<table class="producttable">
+    <tr>
+        <th class="tg-0lax" th:text="#{cart.name}">Name</th>
+        <th class="tg-0lax" th:text="#{cart.price}">Price</th>
+        <th class="tg-0lax" th:text="#{cart.remove}">Remove from cart</th>
+
+    </tr>
+    <tr th:each="product: ${products}">
+        <td th:text="${product.getName()}"></td>
+        <td th:text="${product.getPrice()}"></td>
+        <td><a th:href="@{/cart/remove/{id}(id=${product.getId()})}">
+            <button th:text="#{button.remove}">Remove</button>
+        </a>
+        </td>
+    </tr>
+</table>
+<tr>
+    <ul
+            class="checkout-types">
+        <li>
+            <button
+                    type="submit" title="Proceed to checkout" class="btn btn-black btn-large push-right"
+                    onclick="window.location='/cart/buy';" th:text="#{button.buynow}"><span><span>Proceed to checkout</span></span>
+            </button>
+        </li>
+    </ul>
+</tr>
+<section th:replace="common/footer::footer"></section>
+</body>
+</html>

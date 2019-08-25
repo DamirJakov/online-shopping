@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<section th:replace="common/header::head"></section>
+<body>
+<section class="content-header" th:replace="common/menubar::uperbar"></section>
+<section>
+    <header><h2 th:if="${product.getId()==null}" th:text="#{add.product.header}">Adding product</h2>
+        <h2 th:if="${product.getId()!=null}" th:text="#{update.product.header}">Updating product</h2></header>
+
+    <form style="width:500px" th:action="${product.id == null ? '/product/add' : '/product/update'}" method="post"
+          th:object="${product}">
+        <fieldset>
+            <legend th:text="#{add.product.details}">Product details:</legend>
+            <input type="hidden" th:field="*{id}"/>
+            <span class="label" style="width: 50px" th:text="#{add.product.name}">name: </span>
+            <input name="name" type="text" required="true" th:field="*{name}"/><br/>
+            <span class="label" style="width: 50px" th:text="#{add.product.description}">description:</span>
+            <input name="description" type="text" required="true" th:field="*{description}"/><br/>
+            <span class="label" style="width: 50px" th:text="#{add.product.price}">price: </span>
+            <input name="price" type="number" required="true" th:field="*{price}"/><br/>
+            <span class="available" style="width: 50px" th:text="#{add.product.available}">available: </span>
+            <input th:field="*{available}" type="checkbox" name="available"/><br/>
+            <button type="reset" th:text="#{button.reset}"/>
+            <button th:if="${product.getId()==null}" type="submit" th:text="#{button.add.product}"/>
+            <button th:if="${product.getId()!=null}" type="submit" th:text="#{button.update.product}"/>
+
+        </fieldset>
+    </form>
+</section>
+<section th:replace="common/footer::footer"></section>
+</body>
+</html>

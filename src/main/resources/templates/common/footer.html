@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<body>
+<th:block th:fragment="footer">
+    <script src="../../static/js/script.js" th:src="@{/js/script.js}"></script>
+
+    <script th:inline="javascript">
+        var cartUrl = /*[[@{/cart/}]]*/ '/cart/';
+        var deleteUrl = '/product/remove';
+
+        function addToCart(ide) {
+            $.post(cartUrl,
+                {
+                    id: ide
+                },
+                function (msg) {
+                    if (msg === "202") {
+                        $("#addtocart").css("display", "block").delay('1500').fadeOut('0');
+                    } else if (msg === "208") {
+                        $("#alreadyexists").css("display", "block").delay('1500').fadeOut('0');
+                    }
+                });
+        }
+        function deleteProduct(ide) {
+            if (confirm([[#{product.delete.message}]])) {
+                window.location.href = deleteUrl + ide;
+            }
+        }
+    </script>
+</th:block>
+</body>
+</html>
